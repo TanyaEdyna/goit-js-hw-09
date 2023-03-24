@@ -50,18 +50,20 @@ refs.startBtn.addEventListener('click', () => {
 
 function stopTimer() {
     const millis = dateSelectedByUser - new Date();
-    if (millis <= 0) {
+    if (millis <= 0) { //перевіряє  час між поточним часом і тим часом, що вибрав користувач
         clearInterval(timerId);
         timerId = null;
         refs.startBtn.disabled = true;
         refs.startBtn.textContent = 'Start';
+        return;
     }
     const amountTimeLeft = convertMs(millis);
     refs.numberOfDays.textContent = addLeadingZero(amountTimeLeft.days);
     refs.numberOfHours.textContent = addLeadingZero(amountTimeLeft.hours);
     refs.numberOfMinutes.textContent = addLeadingZero(amountTimeLeft.minutes);
     refs.numberOfSeconds.textContent = addLeadingZero(amountTimeLeft.seconds);
-}
+    
+} 
 
 function convertMs(ms) {
     const second = 1000;
